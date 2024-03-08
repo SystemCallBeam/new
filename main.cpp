@@ -34,6 +34,7 @@ static const char *vShader = "Shaders/shader.vert";
 static const char *fShader = "Shaders/shader.frag";
 
 glm::vec3 lightColour = glm::vec3(1.0f, 1.0f, 1.0f);
+// glm::vec3 lightPos = glm::vec3(5.0f, 5.0f, 0.0f);
 
 void CreateShaders()
 {
@@ -219,11 +220,13 @@ int main()
             meshList[i]->RenderMesh();
 
             // each model change texture here
-            /* glActiveTexture(GL_TEXTURE0);
+            glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, texture);
-            meshList[i]->RenderMesh(); */
+            meshList[i]->RenderMesh();
 
             // light
+            // glUniform3fv(shaderList[0].GetUniformLocation("viewPos"), 1, (GLfloat *)&cameraPos);
+            // glUniform3fv(shaderList[0].GetUniformLocation("lightPos"), 1, (GLfloat *)&lightPos);
             glUniform3fv(shaderList[0].GetUniformLocation("lightColour"), 1, (GLfloat *)&lightColour);
             meshList[i]->RenderMesh();
         }
